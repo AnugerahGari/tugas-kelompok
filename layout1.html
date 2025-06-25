@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style_layout.css"/>
+    <title>tugas</title>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Restaurant</div>
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn btn-signin">Sign In</a>
+                <a href="./signup.html" class="btn btn-signup">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Selamat Datang</h1>
+            <p>Nikmati pengalaman kuliner terbaik dengan hidangan lezat yang disiapkan khusus untuk Anda. Kami hadirkan cita rasa yang tak terlupakan.</p>
+            <div class="hero-buttons">
+              <a href="#main_menu" class="btn btn-primary">Main Menu</a>
+              <div class="secondary-buttons">
+                 <a href="about_us.html" class="btn btn-secondary">Tentang Kami</a>
+                 <a href="./contact.html" class="btn btn-secondary">Hubungi Kami</a>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">Pelanggan Puas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Menu Pilihan</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.9</div>
+                <div class="stat-label">Rating Bintang</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Layanan Online</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Apa Kata Pelanggan Kami</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Makanan di Restaurant ini benar-benar luar biasa! Rendang mereka adalah yang terbaik yang pernah saya coba. Pelayanannya juga sangat ramah dan cepat."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👨</div>
+                        <div class="author-info">
+                            <h4>Surya</h4>
+                            <p>Food Blogger</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Saya sering pesan delivery dari Restaurant ini. Makanannya selalu sampai dalam kondisi hangat dan enak. Harga juga sangat terjangkau untuk kualitas seperti ini."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👩</div>
+                        <div class="author-info">
+                            <h4>Sari</h4>
+                            <p>Ibu Rumah Tangga</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Tempat favorit untuk makan bersama keluarga. Suasananya nyaman dan menu yang disediakan sangat beragam. Anak-anak juga suka!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👨</div>
+                        <div class="author-info">
+                            <h4>Budi</h4>
+                            <p>Karyawan Swasta</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add click animation to buttons
+        const buttons = document.querySelectorAll('.btn, .btn-primary');
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                let ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+                
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        window.addEventListener('scroll', animateStats);
+        animateStats(); // Initial check
+    </script>
+</body>
+</html>

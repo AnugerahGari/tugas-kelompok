@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background-color:#363845;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .contact-container {
+      background-color: #161621;
+      padding: 30px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 900px;
+      box-shadow: #161621;
+    }
+
+    h1, h2, h3 {
+      color: #ffffff;
+      margin-bottom: 15px;
+    }
+
+    .contacts {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .contact-card {
+      background-color: #DF866B;
+      padding: 20px;
+      border: 1px solid #DF866B;
+      border-radius: 8px;
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .contact-card p {
+      margin: 8px 0;
+      color: #ffffff;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #ffffff; 
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid#ffffff;
+    }
+
+    .form-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .form-buttons button {
+      background-color: #DF866B;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-buttons button:hover {
+      background-color: #DF866B;
+    }
+
+    .form-buttons button.back {
+      background-color: #DF866B;
+    }
+
+    .form-buttons button.back:hover {
+      background-color: #DF866B;
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-container">
+    <h1>Hubungi Kami</h1>
+
+    <div class="contacts">
+      <div class="contact-card">
+        <h3>Bernathan</h3>
+        <p><strong>Telepon:</strong> 0812-1111-2222</p>
+        <p><strong>Email:</strong> Bernathan@example.com</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Gary</h3>
+        <p><strong>Telepon:</strong> 0812-3333-4444</p>
+        <p><strong>Email:</strong> Gary@example.com</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Tiara</h3>
+        <p><strong>Telepon:</strong> 0812-5555-6666</p>
+        <p><strong>Email:</strong> Tiara@example.com</p>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h2>Kirim Pesan</h2>
+      <form onsubmit="event.preventDefault(); alert('Pesan berhasil dikirim!');">
+        <label for="name">Nama Anda</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email Anda</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Pesan</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <div class="form-buttons">
+          <button type="submit">Kirim Pesan</button>
+          <button type="button" class="back" onclick="goToHome()">Log out</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function goToHome() {
+      
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

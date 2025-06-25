@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="top">
+                <img src="./assets/logo/logo.svg" alt="" class="logo">
+                <div class="side-button">
+                    <button class="menu-btn active" data-target="home">
+                        <img src="./assets/icons/home.svg" alt="">
+                    </button>
+                    <button class="menu-btn" data-target="receipt">
+                        <img src="./assets/icons/receipt.svg" alt="">
+                    </button>
+                </div>
+            </div>
+            <div class="bottom">
+                <button class="menu-btn" onclick="window.location.href= './login.html'">
+                    <img src="./assets/icons/exit_to_app.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="main">
+            <div class="left">
+                <div class="content active" id="home">
+                    <div class="header">
+                        <h1>Main Menu</h1>
+                        <div class="leading">
+                            <input type="text" name="search" id="search" placeholder="Search your food">
+                            <button class="btn-cart" id="btn-cart">
+                                <img src="./assets/icons/shopping_cart.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tabs">
+                        <button class="tab active">For You</button>
+                        <button class="tab">Noodles</button>
+                        <button class="tab">Rice</button>
+                        <button class="tab">Appetizers</button>
+                        <button class="tab">Desserts</button>
+                        <button class="tab">Beverages</button>
+                    </div>
+                    <div class="tab-content" id="content1">
+                        <div class="card">
+                            <img src="./assets/images/noodle.jpeg" alt="Product Image" class="card-image">
+                            <div class="card-body">
+                                <h2 class="card-title">Product Title</h2>
+                                <div class="card-info">
+                                    <span class="price">$14.99</span>
+                                    <span class="rating">⭐ 4.5</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="btn add">Add to Cart</button>
+                                    <button class="btn buy">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="content" id="receipt">
+                    <div class="header">
+                        <h1>Receipt</h1>
+                    </div>
+
+                    <div class="tab-content" id="content2">
+
+                        <div class="receipt">
+                            <h2 class="receipt-title">Receipt</h2>
+                            <div class="receipt-info">
+                                <p><strong>Order ID:</strong> #123456</p>
+                                <p><strong>Date:</strong> June 23, 2025</p>
+                            </div>
+                            <div class="receipt-items">
+                                <div class="item-row">
+                                    <span>Japchae</span>
+                                    <span>Rp 13.99</span>
+                                </div>
+                                <div class="item-row">
+                                    <span>Bibimbap</span>
+                                    <span>$14.99</span>
+                                </div>
+                            </div>
+                            <div class="receipt-total">
+                                <span>Total:</span>
+                                <span>Rp 28.98</span>
+                            </div>
+                            <div class="receipt-actions">
+                                <button class="btn-download">Download Receipt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="cart">
+                    <div class="cart-title">
+                        <h2>Your Cart</h2>
+                        <button class="cart-reset-button">Reset</button>
+                    </div>
+                    <div class="order-type">
+                        <button class="order-btn active">Dine In</button>
+                        <button class="order-btn">Take Away</button>
+                        <button class="order-btn">Delivery</button>
+                    </div>
+
+                    <div class="cart-items">
+                        <div class="cart-item">
+                            <img src="./assets/images/noodle.jpeg" class="item-img" alt="Product">
+                            <div class="item-detail">
+                                <span class="item-name">Japchae</span>
+                                <span class="item-price">Rp 13.99</span>
+                            </div>
+                            <div class="item-qty-control">
+                                <button class="qty-btn minus">−</button>
+                                <span class="qty-number">1</span>
+                                <button class="qty-btn plus">+</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span class="total-price">Rp0.00</span>
+                    </div>
+                    <button class="checkout-btn">Place Order</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+        //Sidebutton
+        const side_button = document.querySelectorAll('.menu-btn');
+        side_button.forEach(btn => {
+            btn.addEventListener('click', () => {
+                side_button.forEach(element => element.classList.remove('active'));
+                btn.classList.add('active')
+            })
+        });
+
+        //toggle button cart
+        const btnCart = document.getElementById('btn-cart');
+        const cartPanel = document.querySelector('.right');
+
+        btnCart.addEventListener('click', () => {
+            cartPanel.classList.toggle('show');
+            btnCart.classList.toggle('active');
+        });
+
+        const sideButtons = document.querySelectorAll('.menu-btn');
+        const contentSections = document.querySelectorAll('.content');
+
+        sideButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sideButtons.forEach(el => el.classList.remove('active'));
+                btn.classList.add('active');
+
+                const targetId = btn.getAttribute('data-target');
+
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === targetId) {
+                        section.classList.add('active');
+                    }
+                });
+            });
+        });
+
+
+        //check out button
+
+        const checkout = document.querySelector('.checkout-btn');
+        checkout.addEventListener('click', () => {
+            Swal.fire({
+                title: "Order Created",
+                text: 'Please wait while your order is being processed',
+                icon: "success",
+                background: '#262835',
+                color: '#FFFF',
+                confirmButtonColor: '#DF866B',
+            });
+        })
+
+
+
+
+        //dumy data
+
+        const menuData = [
+            {
+                title: "Japchae",
+                price: 13.99,
+                rating: 4.5,
+                category: "Noodles",
+                image: "./assets/images/egg.jpeg"
+            },
+            {
+                title: "Bibimbap",
+                price: 12.49,
+                rating: 4.7,
+                category: "Rice",
+                image: "./assets/images/rice.jpeg"
+            },
+            {
+                title: "Tteokbokki",
+                price: 9.99,
+                rating: 4.3,
+                category: "Appetizers",
+                image: "./assets/images/appetizer.jpeg"
+            },
+            {
+                title: "Matcha Mille Crepe Cake",
+                price: 6.99,
+                rating: 4.8,
+                category: "Desserts",
+                image: "./assets/images/matcha-cake.jpeg"
+            },
+            {
+                title: "Chocolate Lava Cake",
+                price: 7.49,
+                rating: 4.9,
+                category: "Desserts",
+                image: "./assets/images/lava-cake.jpeg"
+            },
+            {
+                title: "Fruit Tart",
+                price: 5.99,
+                rating: 4.6,
+                category: "Desserts",
+                image: "./assets/images/fruit-tart.jpeg"
+            },
+            {
+                title: "Iced Americano",
+                price: 3.99,
+                rating: 4.2,
+                category: "Beverages",
+                image: "./assets/images/americano.jpeg"
+            },
+            {
+                title: "Milk Tea",
+                price: 4.49,
+                rating: 4.5,
+                category: "Beverages",
+                image: "./assets/images/milk-tea.jpeg"
+            },
+            {
+                title: "Spicy Ramen",
+                price: 10.99,
+                rating: 4.4,
+                category: "Noodles",
+                image: "./assets/images/spicy-ramen.jpeg"
+            },
+            {
+                title: "Gimbap",
+                price: 8.99,
+                rating: 4.6,
+                category: "Appetizers",
+                image: "./assets/images/gimbap.jpeg"
+            },
+        ];
+
+        //cart
+        const cartData = [];
+
+        //card render
+
+        const contentContainer = document.getElementById("content1");
+
+        function renderCards(data) {
+            contentContainer.innerHTML = "";
+            data.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = `
+                <img src="${item.image}" alt="${item.title}" class="card-image">
+                <div class="card-body">
+                    <h2 class="card-title">${item.title}</h2>
+                    <div class="card-info">
+                        <span class="price">Rp ${item.price.toFixed(2)}</span>
+                        <span class="rating">⭐ ${item.rating}</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn add">Add to Cart</button>
+                        <button class="btn buy">Buy</button>
+                    </div>
+                </div>
+            `;
+                contentContainer.appendChild(card);
+                const addButton = card.querySelector('.btn.add');
+                addButton.addEventListener('click', () => {
+                    cartData.push({ title: item.title, price: item.price, image: item.image })
+                    renderCartItem(cartData);
+                    calculateCart();
+                });
+                //buy button
+                const buy = card.querySelector('.buy');
+                buy.addEventListener('click', () => {
+                    Swal.fire({
+                        title: "Order Created",
+                        text: 'Please wait while your order is being processed',
+                        icon: "success",
+                        background: '#262835',
+                        color: '#FFFF',
+                        confirmButtonColor: '#DF866B',
+                    });
+                })
+            });
+        }
+
+        //cart item render
+
+        function renderCartItem(data) {
+            const cartItemsContainer = document.querySelector('.cart-items');
+            cartItemsContainer.innerHTML = "";
+            data.forEach(item => {
+                const cartItem = document.createElement("div");
+                cartItem.className = "cart-item";
+                cartItem.innerHTML = `
+            <div class="cart-items">
+                <div class="cart-item">
+                    <img src="${item.image}" class="item-img" alt="Product">
+                    <div class="item-detail">
+                        <span class="item-name">${item.title}</span>
+                        <span class="item-price">Rp ${item.price}</span>
+                    </div>
+                    <div class="item-qty-control">
+                        <button class="qty-btn minus">−</button>
+                        <span class="qty-number">1</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+
+                </div>
+            </div>
+            `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+
+        }
+
+        //calculate cart
+        function calculateCart() {
+            let total = 0;
+            cartData.forEach(item => total += item.price);
+            const price = document.querySelector('.total-price');
+            price.textContent = `Rp.${total.toFixed(2)}`;
+        }
+
+        //reset cart
+        const resetcart = document.querySelector('.cart-reset-button');
+        resetcart.addEventListener('click', () => {
+            cartData.length = 0;
+            renderCartItem(cartData);
+            calculateCart();
+        });
+
+
+        //tab button
+        const tabButtons = document.querySelectorAll('.tab');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabButtons.forEach(t => t.classList.remove('active'));
+                btn.classList.add('active');
+
+                const category = btn.textContent.trim();
+                if (category === "For You") {
+                    renderCards(menuData);
+                } else {
+                    const filtered = menuData.filter(item => item.category === category);
+                    renderCards(filtered);
+                }
+            });
+        });
+
+        //search
+        const search = document.querySelector('#search');
+        search.addEventListener('input', () => {
+            const filtered = menuData.filter(item => item.title.toLowerCase().includes(search.value));
+            renderCards(filtered);
+        });
+
+        //initiate first data
+
+        renderCards(menuData);
+        renderCartItem(cartData);
+
+
+    </script>
+</body>
+
+</html>

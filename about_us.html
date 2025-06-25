@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style_about_us.css"/>
+    <title>tugas</title>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Restaurant</div>
+            <div class="auth-buttons">
+                <a href="/login.html" class="btn btn-signin">Sign In</a>
+                <a href="./signup.html" class="btn btn-signup">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero Section -->
+    <section class="about-hero" id="home">
+        <div class="about-hero-content">
+            <h1>About Us</h1>
+            <p>Kami adalah tim yang berdedikasi untuk menghadirkan pengalaman kuliner terbaik, menggabungkan cita rasa tradisional dengan inovasi modern untuk menciptakan hidangan yang tak terlupakan.</p>
+            <div class="hero-buttons">
+              <a href="layout1.html" class="btn btn-primary">Home Page</a>
+            </div>
+        </div>
+    </section>
+
+            <!-- Team Section -->
+            <div class="team-section">
+                <h2>Tim Kami</h2>
+                
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="profile-image">👨‍💻</div>
+                        <h3>Anugerah Gari</h3>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="profile-image">🧑‍💻</div>
+                        <h3>Bernathan Imanuel Dirly Rotty</h3>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="profile-image">👩‍💻</div>
+                        <h3>Tiara Limbong</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Observe team members for staggered animation
+        teamMembers.forEach((member, index) => {
+            member.style.opacity = '0';
+            member.style.transform = 'translateY(30px)';
+            member.style.transitionDelay = `${index * 0.2}s`;
+            observer.observe(member);
+        });
+    </script>
+</body>
+</html>
